@@ -1,5 +1,12 @@
 {
   "editor.formatOnSave": true,
   "prettier.prettierPath": ".vscode\\settings.json",
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "css.styleSheets": [
+    {
+      "css.enabledLanguages": [
+          "html"
+      ]
+  }
+  ]
 }

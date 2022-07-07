@@ -35,14 +35,14 @@ const createWorkout = async (req, res) => {
       title,
       repetition,
       load,
-    });
+    })
     res.status(200).json(workout);
   } catch (error) {
     res.status(400).json({
       error: error.message,
-    });
+    })
   }
-};
+}
 
 //delete a workout
 const deleteWorkout = async (req, res) => {

@@ -5,7 +5,7 @@ export default function WorkoutDetails({workout}) {
     <div className='workout-details'>
       <h4>{workout.title}</h4>
       <p><strong>Load (kg): </strong>{workout.load}</p>
-      <p><strong>Reps:: </strong>{workout.repetition}</p>
+      <p><strong>Reps: </strong>{workout.repetition}</p>
       <p>{workout.createdAt}</p>
     </div>
   )
