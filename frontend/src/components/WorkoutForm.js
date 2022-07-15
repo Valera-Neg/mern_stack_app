@@ -7,6 +7,7 @@ const [title, setTitle] = useState("");
 const [load, setLoad] = useState("");
 const [repetition, setRepetition] = useState("");
 const [error, setError] = useState(null);
+const [emptyFields, setEmptyFields] = useState([])
 
 
 const handleSubmit = async (e) => {
@@ -25,12 +26,14 @@ const handleSubmit = async (e) => {
 
   if(!response.ok) {
     setError(json.error)
+    setEmptyFields(json.emptyFields)
   }
   if (response.ok) {
     setTitle("")
     setLoad("")
     setRepetition("")
     setError(null)
+    setEmptyFields([])
     console.log("new workout added", json)
     dispatch({type: "CREATE_WORKOUT", payload: json})
   }
@@ -45,18 +48,21 @@ const handleSubmit = async (e) => {
     type="text"
     onChange={(e) => setTitle(e.target.value)}
     value={title}
+    className={emptyFields.includes("title") ? "error" : ""}
     />
     <label>Load (in kg):</label>
     <input 
     type="text"
     onChange={(e) => setLoad(e.target.value)}
     value={load}
+    className={emptyFields.includes("load") ? "error" : ""}
     />
     <label>Repetitions:</label>
     <input 
     type="text"
     onChange={(e) => setRepetition(e.target.value)}
     value={repetition}
+    className={emptyFields.includes("repetition") ? "error" : ""}
     />
     <button>Add Workout</button>
     {error && <div className="error">{error}</div>}
