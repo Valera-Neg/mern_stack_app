@@ -1,7 +1,8 @@
 import { useState } from "react"
-import { useSearchParams } from "react-router-dom"
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 
 const WorkoutForm = () => {
+const { dispatch } = useWorkoutsContext()
 const [title, setTitle] = useState("");
 const [load, setLoad] = useState("");
 const [repetition, setRepetition] = useState("");
@@ -31,6 +32,7 @@ const handleSubmit = async (e) => {
     setRepetition("")
     setError(null)
     console.log("new workout added", json)
+    dispatch({type: "CREATE_WORKOUT", payload: json})
   }
 }
 
